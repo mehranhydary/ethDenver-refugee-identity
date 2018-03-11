@@ -1,5 +1,5 @@
-var Refugee = artifacts.require("./contracts/Refugee.sol");
+var RefugeeIdentity = artifacts.require("./contracts/RefugeeIdentity.sol");
 
 module.exports = function (deployer) {
-  deployer.deploy(Refugee);
+  deployer.deploy(RefugeeIdentity);
 };

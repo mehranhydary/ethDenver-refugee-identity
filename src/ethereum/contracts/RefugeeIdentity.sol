@@ -1,4 +1,4 @@
-pragma solidity ^0.4.19;
+pragma solidity ^0.4.17;
 
 import "./OwnerIdentity.sol";
 
@@ -45,7 +45,7 @@ contract RefugeeIdentity is OwnerIdentity {
             eventPersonEdited("Person data edited successfully.", _id);
         } else {
             eventPersonEdited("Error looking up person.", _id);
-            throw;
+            assert(counter > _id);
         }
     }
     
@@ -54,7 +54,7 @@ contract RefugeeIdentity is OwnerIdentity {
             return (people[_id].id, people[_id].fullName, people[_id].origin, people[_id].organization, people[_id].ipfsFirst, people[_id].ipfsSecond);
         } else {
             eventGetPerson("Invalid ID used for lookup", _id);
-            throw;
+            assert(counter < _id);
         }
     }
     
@@ -85,7 +85,7 @@ contract RefugeeIdentity is OwnerIdentity {
             eventtransferIdentityOwnership("Identity owenership transfered", _id);
         } else {
             eventtransferIdentityOwnership("Error when trying to transfer identity owenership", _id);
-            throw;
+            assert(_id > counter);
         }
     }
     
